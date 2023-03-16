@@ -1,3 +1,16 @@
+<?php
+  //start the session
+  session_start();
+
+  require_once('../config/db.php');
+  require_once('../helpers/functions.php');
+
+  // Use PDO to query the database for a user with the provided credentials
+  $db = new db();
+  $conn = $db->getConnection();
+
+  remember_me($conn);
+?>
 <html>
 
 <head>
@@ -88,7 +101,7 @@
                                 </div>
                                 <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
                                     <label for="checkbox">
-                                        <input type="checkbox" name="checkbox"> Stay signed in for a week
+                                        <input type="checkbox" name="remember_me"> Stay signed in for a week
                                     </label>
                                 </div>
                                 <div class="field padding-bottom--24">

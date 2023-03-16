@@ -31,6 +31,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // If a user is found with the provided username, check their password
         if ($user /*&& password_verify($sanitizedPassword , $user['password'])*/) {
+          if (isset($_POST['remember_me'])) {
+              // Generate a random token and store it in a cookie
+              $token = bin2hex(openssl_random_pseudo_bytes(16));
+              setcookie('remember_token', $token, time() + (86400 * 30), '/'); // Cookie expires in 30 days
+            
+              // Store the token in the database
+              $user_id = $user['id_user']; // Replace with the actual user ID
+              $expiry_date = date('Y-m-d H:i:s', time() + (86400 * 30)); // Token expires in 30 days
+              $sql = "UPDATE `users` SET `token`=?,`expiration`=? WHERE `id_user`=? ;";
+              $conn->prepare($sql)->execute([$token, $expiry_date, $user_id]);
+          }
         
           // Store the user's session information
           $_SESSION['user_id'] = $user['id_user'];
