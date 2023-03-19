@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // If a user is found with the provided username, check their password
-        if ($user /*&& password_verify($sanitizedPassword , $user['password'])*/) {
+        if ($user && password_verify($sanitizedPassword , $user['password'])) {
           if (isset($_POST['remember_me'])) {
               // Generate a random token and store it in a cookie
               $token = bin2hex(openssl_random_pseudo_bytes(16));
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
           // If the user's credentials are invalid, display an error message
           $error_message = 'Invalid username or password.';
-          header('Location: ../views/login.php?error='.$error_message);
+          header('Location: ../views/login.php?message='.$error_message.'&type=danger');
           exit();
         }
     }

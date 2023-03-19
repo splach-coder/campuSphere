@@ -12,7 +12,38 @@ function sanitizeInput($input) {
 
 
 function checkLogin(){
-  
+    if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true){
+        // Redirect the user to the home page or another protected resource
+        header('Location: ../views/dashboard.php');
+        exit;
+    }
+}
+
+function checkOneHourElapsed($datetime) {
+  // Convert MySQL datetime string to Unix timestamp
+  $datetimeTimestamp = strtotime($datetime);
+
+  // Calculate the Unix timestamp for one hour ago
+  $oneHourAgoTimestamp = time() - 3600;
+
+  // Compare the given datetime timestamp with one hour ago
+  if ($datetimeTimestamp >= $oneHourAgoTimestamp) {
+    // Return true if less than one hour has elapsed
+    return true;
+  } else {
+    // Return false if more than one hour has elapsed
+    return false;
+  }
+}
+
+
+function compareStrings($string1, $string2) {
+  // Compare the two strings using the strcmp() function
+  $result = strcmp($string1, $string2);
+
+  // Return true if the result is 0 (i.e. the strings are equal)
+  // Otherwise, return false
+  return $result === 0;
 }
 
 
@@ -35,7 +66,6 @@ function remember_me($conn){
         header('Location: ../views/dashboard.php');
         exit;
     }else{
-
       //remove the cookie from the browser
       setcookie('remember_token', '', time() - 3600, '/');
     }

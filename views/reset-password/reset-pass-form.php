@@ -1,21 +1,21 @@
 <?php
-  require_once '../auth/forwardAuthentication.php';
+  require_once '../../auth/forwardAuthentication.php';
 ?>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/x-icon" href="../public/icons/campushpere.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../public/icons/campushpere.ico" />
     <title>campuSphere: Sign in</title>
 
     <!-- link the bootstrap -->
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 
     <!-- link the css files -->
-    <link rel="stylesheet" type="text/css" href="../public/css/loginStyle.css">
+    <link rel="stylesheet" type="text/css" href="../../public/css/loginStyle.css">
 
     <!-- link the js files -->
-    <script src="../public/js/loginScript.js">
+    <script src="../../public/js/loginScript.js">
 
     </script>
 </head>
@@ -68,8 +68,8 @@
                 <div class="formbg-outer">
                     <div class="formbg">
                         <div class="formbg-inner padding-horizontal--48">
-                            <span class="padding-bottom--15">Sign in to your account</span>
-                            <form id="stripe-login" method="post" action="../controller/LoginController.php"
+                            <span class="padding-bottom--15">enter password</span>
+                            <form id="stripe-login" method="post" action="../../controller/change_password.php"
                                 onsubmit="return validateForm()">
                                 <?php if(isset($_GET['message']) && isset($_GET['type'])){?>
                                 <div class="alert alert-<?=$_GET['type']?>" role="alert">
@@ -77,28 +77,15 @@
                                 </div>
                                 <?php }?>
                                 <div class="field padding-bottom--24">
-                                    <label for="username">username</label>
-                                    <input type="text" id="username" name="username">
-                                </div>
-                                <div class="field padding-bottom--24">
-                                    <div class="grid--50-50">
-                                        <label for="password">Password</label>
-                                        <div class="reset-pass">
-                                            <a href="./reset-password/enter-email.php">Forgot your password?</a>
-                                        </div>
-                                    </div>
+                                    <label for="password">password</label>
                                     <input type="password" id="password" name="password">
                                 </div>
-                                <div class="field field-checkbox padding-bottom--24 flex-flex align-center">
-                                    <label for="checkbox">
-                                        <input type="checkbox" name="remember_me"> Stay signed in
-                                    </label>
+                                <div class="field padding-bottom--24">
+                                    <label for="re-password">re-password</label>
+                                    <input type="password" id="re-password" name="re-password">
                                 </div>
                                 <div class="field padding-bottom--24">
                                     <input type="submit" name="submit" value="Continue">
-                                </div>
-                                <div class="field">
-                                    <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
                                 </div>
                             </form>
                         </div>
@@ -118,8 +105,8 @@
 
 
     <!-- implement jquery and bootstrap -->
-    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -3,23 +3,29 @@ fadeAlert();
 
 function validateForm() {
     // Get form inputs
-    var name = $("#username").val();
-    var email = $("#password").val();
+    var formInputs = $('form').find('input[type!="checkbox"][type!="submit"]');
+    var allInputsFilled = true;
 
-    // Sanitize inputs
-    var clean_username = sanitizeInput(name);
-    var clean_password = sanitizeInput(email);
+    // Loop through all inputs
+    formInputs.each(function () {
+        var inputValue = $(this).val();
+        // Sanitize inputs
+        var cleanInput = sanitizeInput(inputValue);
 
-    // Check if inputs are empty
-    if (clean_username == "" || clean_password == "") {
-        //my code here
-        $('form').prepend(`<div class="alert alert-danger" role="alert">Please fill out all fields.</div>`);
-        fadeAlert();
-        return false;
-    } else {
-        return true;
-    }
+        // Check if input is empty
+        if (cleanInput == "") {
+            // Add error message and mark flag as false
+            $('form').prepend(`<div class="alert alert-danger" role="alert">Please fill out all fields.</div>`);
+            fadeAlert();
+            allInputsFilled = false;
+            return false; // break out of loop early
+        }
+    });
+
+    return allInputsFilled;
 }
+
+
 
 function sanitizeInput(input) {
     // Remove any HTML and JavaScript tags
