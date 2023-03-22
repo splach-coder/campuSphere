@@ -10,7 +10,6 @@ function sanitizeInput($input) {
     return $clean_input;
 }
 
-
 function checkLogin(){
     if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true){
         // Redirect the user to the home page or another protected resource
@@ -36,7 +35,6 @@ function checkOneHourElapsed($datetime) {
   }
 }
 
-
 function compareStrings($string1, $string2) {
   // Compare the two strings using the strcmp() function
   $result = strcmp($string1, $string2);
@@ -45,7 +43,6 @@ function compareStrings($string1, $string2) {
   // Otherwise, return false
   return $result === 0;
 }
-
 
 function remember_me($conn){
   // Verify the token when the user visits the site
@@ -71,4 +68,7 @@ function remember_me($conn){
     }
   }
 }
+
+
+
   

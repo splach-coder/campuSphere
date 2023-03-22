@@ -1,9 +1,18 @@
 <?php
   //start the session
   session_start();
-
-  require_once('../config/db.php');
-  require_once('../helpers/functions.php');
+  
+  $currentUrl = $_SERVER['REQUEST_URI'];
+  $url = '';
+  
+  if (strpos($currentUrl, 'reset-password') !== false) {
+    // the string 'reset-password' was found in the URL
+    $url.='../';
+  }
+  
+  
+  require_once($url.'../config/db.php');
+  require_once($url.'../helpers/functions.php');
 
   // Use PDO to query the database for a user with the provided credentials
   $db = new db();
