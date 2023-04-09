@@ -97,9 +97,9 @@
                                 <div class="field padding-bottom--24">
                                     <input type="submit" name="submit" value="Continue">
                                 </div>
-                                <div class="field">
+                                <!-- <div class="field">
                                     <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
-                                </div>
+                                </div> -->
                             </form>
                         </div>
                     </div>

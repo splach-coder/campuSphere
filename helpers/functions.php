@@ -20,7 +20,7 @@ function checkLogin(){
 
 function checkOneHourElapsed($datetime) {
   // Convert MySQL datetime string to Unix timestamp
-  $datetimeTimestamp = strtotime($datetime);
+  $datetimeTimestamp = $datetime;
 
   // Calculate the Unix timestamp for one hour ago
   $oneHourAgoTimestamp = time() - 3600;
@@ -69,6 +69,24 @@ function remember_me($conn){
   }
 }
 
+function getRoute($type){
+  $str = '../public/';
+  if($type == "photo")
+    $str .= "images/stories/";
+  else 
+    $str = "videos/";  
+  return $str;
+}
+
+function getMediaType($type) {
+  if ($type == 'image') {
+      return 'photo';
+  } elseif ($type == 'video') {
+      return 'video';
+  } else {
+      return '';
+  }
+}
 
 
   

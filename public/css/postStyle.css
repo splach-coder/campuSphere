@@ -1,0 +1,482 @@
+::selection {
+  color: #fff;
+  background: #4267B2;
+}
+
+.post-modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  backdrop-filter: grayscale(100%) blur(2px);
+  align-items: center;
+  justify-content: center;
+  display: none;
+  font-family: 'Lato', sans-serif;
+}
+
+.body-holder {
+  max-height: 250px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-bottom: 10px;
+  padding-inline: 5px;
+}
+
+.body-holder::-webkit-scrollbar{
+  background-color: transparent;
+  width: 5px;
+}
+
+.body-holder::-webkit-scrollbar-thumb{
+  background-color: var(--secondary-gray);
+  border-radius: 5px;
+}
+
+.media-area {
+  position: relative;
+  width: 100%;
+  border: 1px solid #ccc;
+  min-height: 200px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #323436;
+  transition: all 250ms ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.media-area .slider{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+}
+
+.media-area .slider img, .media-area .slider video {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 3px;
+}
+
+.media-area:hover {
+  background: #47494A;
+}
+
+.media-area i {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  color: #E7E9EC;
+  background-color: #5A5C5C;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.media-area .fas {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 22px;
+  color: #E7E9EC;
+
+}
+
+.media-area h3 {
+  font-size: 17px;
+  font-weight: 500;
+  color: #e4e6eb;
+  line-height: 20px;
+  margin: 0;
+}
+
+.media-area p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #b0b3b8;
+  line-height: 16px;
+  margin: 0;
+}
+
+#post-close-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.new-post-con {
+  width: 600px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.12);
+  padding: 20px 10px;
+  gap: 10px;
+  font-family: 'Lato', sans-serif;
+}
+
+.new-post-con .box-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ccc;
+}
+
+.new-post-con .box-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.new-post-con .input-holder {
+  width: 70%;
+  font-weight: 500;
+  color: #777;
+  padding: 9px 0;
+}
+
+.new-post-con button {
+  width: 80px;
+  height: 45px;
+  cursor: pointer;
+  background: var(--primary-blue);
+  color: white;
+  padding: 10px 0;
+  border: none;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+.post-modal .post-container {
+  width: 500px;
+  height: 440px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 10px;
+  transition: height 0.2s ease;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.post-modal .post-container.active {
+  height: 590px;
+}
+
+.post-modal .post-container .wrapper {
+  width: 1000px;
+  display: flex;
+}
+
+.post-modal .post-container .wrapper section {
+  width: 500px;
+  background: #fff;
+}
+
+.post-modal .post-container img {
+  cursor: pointer;
+}
+
+.post-modal .post-container .post {
+  transition: margin-left 0.18s ease;
+}
+
+.post-modal .post-container.active .post {
+  margin-left: -500px;
+}
+
+.post-modal .post header {
+  font-size: 22px;
+  font-weight: 600;
+  padding: 17px 0;
+  text-align: center;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.post-modal .post .form {
+  margin: 20px 25px;
+}
+
+.post-modal .post .form .content,
+.post-modal .audience .list li .column {
+  display: flex;
+  align-items: center;
+}
+
+.post-modal .post .form .content img {
+  cursor: default;
+  max-width: 45px;
+  border-radius: 8px;
+}
+
+.post-modal .post .form .content .details {
+  margin: -3px 0 0 12px;
+}
+
+.post-modal .form .content .details p {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.post-modal .content .details .privacy {
+  display: flex;
+  height: 25px;
+  cursor: pointer;
+  padding: 0 10px;
+  font-size: 11px;
+  margin-top: 3px;
+  border-radius: 5px;
+  align-items: center;
+  max-width: 98px;
+  background: #E4E6EB;
+  justify-content: space-between;
+}
+
+.post-modal .details .privacy span {
+  font-size: 13px;
+  margin-top: 1px;
+  font-weight: 500;
+}
+
+.post-modal .details .privacy i:last-child {
+  font-size: 13px;
+  margin-left: 1px;
+}
+
+.post-modal .form :where(textarea, button) {
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+.post-modal .form textarea {
+  resize: none;
+  font-size: 18px;
+  margin-top: 30px;
+  height: auto;
+}
+
+.post-modal .form textarea::placeholder {
+  color: #858585;
+}
+
+.post-modal .form textarea:focus::placeholder {
+  color: #b3b3b3;
+}
+
+.post-modal .form :where(.theme-emoji, .options) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-modal .theme-emoji img:last-child {
+  max-width: 24px;
+}
+
+.post-modal .form .options {
+  height: 57px;
+  margin: 15px 0;
+  padding: 0 15px;
+  border-radius: 7px;
+  border: 1px solid #B9B9B9;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.post-modal .form .options :where(.list, li),
+.post-modal .audience :where(.arrow-back, .icon, li .radio) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-modal .form .options p {
+  color: #595959;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: default;
+}
+
+.post-modal .form .options .list {
+  list-style: none;
+}
+
+.post-modal .options .list li {
+  height: 42px;
+  width: 42px;
+  margin: 0 -1px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.post-modal .options .list li:hover {
+  background: #f0f1f4;
+}
+
+.post-modal .options .list li img {
+  width: 23px;
+}
+
+.post-modal .form button {
+  height: 53px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #BCC0C4;
+  cursor: no-drop;
+  border-radius: 7px;
+  background: #e2e5e9;
+  transition: all 0.3s ease;
+}
+
+.post-modal .form button.accepted {
+  color: #fff;
+  cursor: pointer;
+  background: #4267B2;
+}
+
+.post-modal .form button.accepted:hover  {
+  background: #2f4d89;
+}
+
+.post-modal .container .audience {
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+
+.post-modal .container.active .audience {
+  opacity: 1;
+}
+
+.post-modal .audience header {
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.post-modal .audience header .arrow-back {
+  position: absolute;
+  left: 25px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #747474;
+  border-radius: 50%;
+  background: #E4E6EB;
+}
+
+.post-modal .audience header p {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.post-modal .audience .content {
+  margin: 20px 25px 0;
+}
+
+.post-modal .audience .content p {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.post-modal .audience .content span {
+  font-size: 14px;
+  color: #65676B;
+}
+
+.post-modal .audience .list {
+  margin: 15px 16px 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.post-modal .audience .list li {
+  display: flex;
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-modal .list li.active,
+.post-modal .audience .list li.active:hover {
+  background: #E5F1FF;
+}
+
+.post-modal .audience .list li:hover {
+  background: #f0f1f4;
+}
+
+.post-modal .audience .list li .column .icon {
+  height: 50px;
+  width: 50px;
+  color: #333;
+  font-size: 23px;
+  border-radius: 50%;
+  background: #E4E6EB;
+}
+
+.post-modal .audience .list li.active .column .icon {
+  background: #cce4ff;
+}
+
+.post-modal .audience .list li .column .details {
+  margin-left: 15px;
+}
+
+.post-modal .list li .column .details p {
+  font-weight: 500;
+}
+
+.post-modal .list li .column .details span {
+  font-size: 14px;
+  color: #65676B;
+}
+
+.post-modal .list li .radio {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  position: relative;
+  border: 1px solid #707070;
+}
+
+.post-modal .list li.active .radio {
+  border: 2px solid #4267B2;
+}
+
+.post-modal .list li .radio::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: inherit;
+}
+
+.post-modal .list li.active .radio::before {
+  background: #4267B2;
+}

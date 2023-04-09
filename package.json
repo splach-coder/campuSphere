@@ -18,6 +18,10 @@
   "homepage": "https://github.com/splach-coder/campuSphere#readme",
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "jquery": "^3.6.3"
+    "dompurify": "^3.0.1",
+    "jquery": "^3.6.3",
+    "normalize.css": "^8.0.1",
+    "toastr": "^2.1.4",
+    "zuck.js": "^2.0.4"
   }
 }
