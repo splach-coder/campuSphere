@@ -19,13 +19,14 @@ $conn = $db->getConnection();
 
 $userID = $_SESSION['user_id'];
 
-$sql = "SELECT DISTINCT p.post_id, p.user_id, u.user_name, pr.profile_pic, p.status, p.user_audience, p.comments_number, p.views_number, p.shares_number, p.saves_number, p.    created_at
+$sql = "SELECT DISTINCT p.post_id, p.user_id, u.user_name, pr.profile_pic, p.status, p.user_audience, p.has_media, p.likes_number, p.comments_number, p.views_number, p.shares_number, p.saves_number, p.created_at
         FROM posts_interactions AS pi1
         INNER JOIN posts_interactions AS pi2 ON pi1.post_id = pi2.post_id
         INNER JOIN posts AS p ON pi2.post_id = p.post_id
         INNER JOIN users AS u ON u.id_user = p.user_id
         INNER JOIN profile AS pr ON u.id_user = pr.id_user 
         WHERE pi1.user_id = '$userID'
+        AND p.user_id != '$userID'
         AND pi1.interaction_type IN ('like', 'view', 'comment', 'share', 'save') 
         AND pi2.interaction_type IN ('like', 'view', 'comment', 'share', 'save') 
         AND pi1.user_id != pi2.user_id
@@ -39,18 +40,37 @@ $posts = $stmt->fetchAll();
 $posts_arr = array();
 
 foreach ($posts as $post) {
+    $pass = 'pass';
+
+    if ($post['has_media'] == "true") {
+        $pass = "non";
+    }
+
+    $postID = $post['post_id'];
+
+    $query = "SELECT count(*) FROM `post_likes` AS pl
+    WHERE pl.user_id = '$userID' 
+    AND pl.post_id = '$postID' LIMIT 1";
+
+    $liked = fetchSingleValue($query, $conn);
+
+    $likedByUser = ($liked == 1) ? true : false;
+
     $p = array(
-        'post_id' => $post['post_id'],
+        'post_id' => $postID,
         'user_id' => $post['user_id'],
         'user_name' => $post['user_name'],
         'user_image' => '../public/images/' . $post['profile_pic'],
-        'status' => $post['status'],
+        'status' => slice_status($post['status'], $pass),
         'user_audience' => $post['user_audience'],
-        'created_at' => $post['created_at'],
+        'date' => instagram_time($post['created_at']),
+        'likes_number' => $post['likes_number'],
         'comments_number' => $post['comments_number'],
         'views_number' => $post['views_number'],
         'shares_number' => $post['shares_number'],
         'saves_number' => $post['saves_number'],
+        'has_media' => $post['has_media'],
+        'likedByUser' => $likedByUser,
         'post_media' => array()
     );
 
@@ -58,7 +78,7 @@ foreach ($posts as $post) {
 };
 
 foreach ($posts_arr as &$post) {
-    $stmt = $conn->prepare("SELECT `id`, `post_id`, `media_url`, `type`, `created_at` FROM `post_media` WHERE `post_id` = :id");
+    $stmt = $conn->prepare("SELECT `id`, `post_id`, `media_url`, `type` FROM `post_media` WHERE `post_id` = :id");
     $stmt->execute(['id' => $post['post_id']]);
     $data = $stmt->fetchAll();
 
@@ -70,7 +90,7 @@ foreach ($posts_arr as &$post) {
             'type' => $row['type'],
         );
 
-        array_push($posts_arr['post_media'], $new_item);
+        array_push($post['post_media'], $new_item);
     }
 };
 

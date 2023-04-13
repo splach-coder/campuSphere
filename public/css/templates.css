@@ -1,0 +1,343 @@
+.profile-con {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    padding: 15px 0 15px 20px;
+    box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.12);
+    gap: 5%;
+    border-radius: 10px;
+    background: white;
+    font-family: 'Lato', sans-serif;
+}
+
+.profile-con .profile-image-box {
+    width: 20%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.profile-con .profile-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-con .profile-infos-con {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.profile-con .profile-infos-con .full-name {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--primary-black);
+}
+
+.profile-con .profile-infos-con .user-name {
+    font-weight: 400;
+    font-size: 15px;
+    color: #777;
+}
+
+
+
+
+/*friend Request*/
+
+.friends-req {
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+.friends-req::-webkit-scrollbar {
+    width: 2px;
+}
+
+.friends-req::-webkit-scrollbar-thumb {
+    background-color: var(--primary-blue);
+}
+
+.friends-req::-webkit-scrollbar-track {
+    background-color: var(--primary-gray);
+}
+
+.friend-request-con {
+    margin: 0 auto;
+    width: fit-content;
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Lato", sans-serif;
+}
+
+.friend-request-con .friend-req-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    width: 300px;
+}
+
+.friend-request-con .friend-req-header p.noreqs {
+    margin: 30px auto;
+    font-size: 18px;
+    color: var(--secondary-gray);
+}
+
+.friend-request-con .friend-req-header span:first-child {
+    color: var(--secondary-gray);
+    font-weight: 700;
+}
+
+.friend-request-con .friend-req-header span:last-child {
+    background: var(--primary-blue);
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    display: grid;
+    place-content: center;
+}
+
+.friend-request-con .request {
+    width: 300px;
+    padding: 15px 20px;
+    background: white;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 8px;
+}
+
+.friend-request-con .request .upper {
+    display: flex;
+    gap: 6%;
+    align-items: center;
+}
+
+.friend-request-con .request.first {
+    margin-top: 15px;
+}
+
+.friend-request-con .request .req-img-bx {
+    width: 20%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #ccc;
+}
+
+.friend-request-con .request .req-img-bx img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.friend-request-con .request .req-img-infos {
+    font-size: 15px;
+    font-weight: 400;
+    color: #777;
+    line-height: 24px;
+    width: 75%;
+}
+
+.friend-request-con .request .req-img-infos span {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-black);
+}
+
+.friend-request-con .request .req-btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.friend-request-con .request .req-btns button {
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    padding: 8px 24px;
+    border-radius: 5px;
+    min-width: 120px;
+    min-height: 32px;
+    background-color: rgb(0, 120, 212);
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 500;
+    box-sizing: border-box;
+    border: 1px solid rgb(0, 120, 212);
+    transition: all 250ms ease;
+}
+
+.friend-request-con .request .req-btns button.decline {
+    background: transparent;
+    color: var(--primary-black);
+}
+
+.friend-request-con .request .req-btns button.accept:hover {
+    background-color: rgb(6 93 160);
+}
+
+.friend-request-con .request .req-btns button.decline:hover {
+    background-color: #F6F6F7;
+}
+
+
+/*side bar styles*/
+/* Style for the sidebar */
+.sidebar {
+    width: fit-content;
+    background-color: #f2f2f2;
+    overflow-x: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-inline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+    box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+    font-family: 'Lato', sans-serif;
+    transition: all 250ms ease;
+}
+
+/* Style for the navigation links */
+.sidebar a {
+    display: flex;
+    width: 300px;
+    padding: 20px 0 20px 20px;
+    text-decoration: none;
+    color: var(--primary-black);
+    gap: 15px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Style for the active navigation link */
+.sidebar a.active, .sidebar a:hover {
+    background: #F6F6F7;
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-gray);
+    border-left: 3px solid var(--primary-blue);
+    border-right: none;
+}
+
+/* Style for the icon */
+.sidebar i {
+    margin-right: 8px;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+
+
+/* the friends bar*/
+.friends-list {
+    overflow-y: scroll;
+    font-family: 'Lato', sans-serif;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friends-list::-webkit-scrollbar {
+    width: 2px;
+}
+
+.friends-list::-webkit-scrollbar-thumb {
+    background-color: var(--primary-blue);
+}
+
+.friends-list::-webkit-scrollbar-track {
+    background-color: var(--primary-gray);
+}
+
+.friends-list .friends-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    width: 300px;
+}
+
+.friends-list .friends-list-header p.noreqs {
+    margin: 30px auto;
+    font-size: 18px;
+    color: var(--secondary-gray);
+}
+
+.friends-list .friends-list-header span:first-child {
+    color: var(--secondary-gray);
+    font-weight: 700;
+}
+
+.friends-list .friends-list-header span:last-child {
+    background: var(--primary-blue);
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    display: grid;
+    place-content: center;
+}
+
+.friends-list .friends {
+    width: 300px;
+    padding: 15px 20px;
+    background: white;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 8px;
+}
+
+.friends-list .friends .friends-img-box {
+    width: 20%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #ccc;
+}
+
+.friends-list .friends .friends-img-box img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.friends-list .friends .friends-infos {
+    line-height: 24px;
+    width: 75%;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-black);
+}
+
+.friends-list .friends .friends-notif {
+    background: red;
+    color: white;
+    min-width: 25px;
+    min-height: 25px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}

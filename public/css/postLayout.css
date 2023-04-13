@@ -1,0 +1,231 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.col .posts .post {
+    width: 600px;
+    aspect-ratio: 1/1.1;
+    background-color: white;
+    margin-inline: auto;
+    padding: 10px 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+    box-shadow: 0 2px 3px 0px #ccc;
+    margin-bottom: 15px;
+}
+
+.col .post .status-media {
+    display: flex;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.col .post .status-media button {
+    background: none;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: all 250ms ease;
+}
+
+.col .post .status-media button:hover {
+    color: #106EBE;
+}
+
+.col .post .post-header {
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.col .post .post-params i {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.col .post .post-header .post-profile {
+    display: flex;
+    gap: 15px;
+}
+
+.col .post .post-header .post-profile .post-profile-img {
+    position: relative;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.col .post .post-header .post-profile .post-profile-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.col .post .post-header .post-profile .post-profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+.col .post .post-header .post-profile .post-profile-info .post-owner-username {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.col .post .post-header .post-profile .post-profile-info .post-owner-location {
+    font-weight: 500;
+    font-size: 14px;
+    color: #777;
+}
+
+.col .post .content-media {
+    height: 65%;
+    margin-top: 15px;
+}
+
+.col .post .content-media img, .col .post .content-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.col .post .interaction-bar {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.col .post .interaction-bar i {
+    font-size: 18px;
+}
+
+.col .post .interaction-bar button {
+    cursor: pointer;
+    outline: none;
+    background: none;
+    border: none;
+    margin-right: 5px;
+}
+
+.col .post .interaction-bar .like-button i {
+    color: #F33145;
+}
+
+.col .post .interaction-bar .comment-button i {
+    color: #106EBE;
+}
+
+.col .post .interaction-bar .share-button i {
+    color: #AAB5BF;
+}
+
+.col .post .interaction-bar .save-button i {
+    color: #AAB5BF;
+}
+
+.col .post .comment-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 10%;
+    gap: 5%;
+}
+
+.col .post .comment-bar .comment {
+    width: 80%;
+    border: none;
+    outline: none;
+    height: 50%;
+    padding-inline: 1px;
+    border-bottom: 1px solid #ccc;
+}
+
+/*.col .post.comment-bar button {
+  width: 15%;
+  border: none;
+  outline: none;
+  padding-inline: 10px;
+  cursor: pointer;
+  height: 50%;
+  border-radius: 5px;
+  background: #1877f2;
+  color: white;
+}*/
+
+.col .post .devider {
+    width: 100%;
+    height: .5px;
+    background: #ccc;
+    margin: 15px 0 5px 0;
+}
+
+.col .post .comment-bar button {
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    padding: 0px 16px;
+    border-radius: 2px;
+    min-width: 80px;
+    height: 32px;
+    background-color: rgb(0, 120, 212);
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: 400;
+    box-sizing: border-box;
+    border: 1px solid rgb(0, 120, 212);
+    transition: all 250ms ease;
+}
+
+.col .post .comment-bar button:hover {
+    background-color: rgb(16, 110, 190);
+    border: 1px solid rgb(16, 110, 190);
+}
+
+.col .post .date {
+    color: #777;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 11px;
+}
+
+.col .post img {
+    cursor: pointer;
+}
+
+.post.nomedia .content-bar {
+    padding: 15px 0;
+}
+
+.post.nomedia .comment-bar {
+    margin: 15px 0 10px 0;
+}
+
+.posts .post.nomedia {
+    aspect-ratio: 0;
+}

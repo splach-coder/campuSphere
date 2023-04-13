@@ -190,7 +190,6 @@ $(document).ready(function () {
         );
     });
 
-
     $('#post_status').on('keyup', function () {
         if ($(this).val().length <= 0)
             $("#post-button").removeClass('accepted');

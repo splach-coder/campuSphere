@@ -4,7 +4,7 @@
 }
 
 .post-modal {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -15,6 +15,7 @@
   justify-content: center;
   display: none;
   font-family: 'Lato', sans-serif;
+  z-index: 999;
 }
 
 .body-holder {
@@ -25,12 +26,12 @@
   padding-inline: 5px;
 }
 
-.body-holder::-webkit-scrollbar{
+.body-holder::-webkit-scrollbar {
   background-color: transparent;
   width: 5px;
 }
 
-.body-holder::-webkit-scrollbar-thumb{
+.body-holder::-webkit-scrollbar-thumb {
   background-color: var(--secondary-gray);
   border-radius: 5px;
 }
@@ -50,7 +51,7 @@
   border-radius: 5px;
 }
 
-.media-area .slider{
+.media-area .slider {
   position: absolute;
   top: 0;
   left: 0;
@@ -132,9 +133,10 @@
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.12);
-  padding: 20px 10px;
+  padding: 10px 7px;
   gap: 10px;
   font-family: 'Lato', sans-serif;
+  margin: 0 auto;
 }
 
 .new-post-con .box-img {
@@ -178,6 +180,7 @@
   border-radius: 10px;
   transition: height 0.2s ease;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+
 }
 
 .post-modal .post-container.active {
@@ -357,7 +360,7 @@
   background: #4267B2;
 }
 
-.post-modal .form button.accepted:hover  {
+.post-modal .form button.accepted:hover {
   background: #2f4d89;
 }
 

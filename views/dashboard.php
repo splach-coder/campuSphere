@@ -1,6 +1,6 @@
-<!-- <?php 
-    require_once '../auth/ensureAuthentication.php';
-?> -->
+<!-- <?php
+        require_once '../auth/ensureAuthentication.php';
+        ?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +23,7 @@
     <!-- link the zuck.js css styles -->
     <link rel="stylesheet" href="../node_modules/zuck.js/dist/zuck.css" />
     <link rel="stylesheet" href="../node_modules/zuck.js/dist/skins/snapssenger.css" />
+    <link rel="stylesheet" href="../node_modules/swiper/swiper-bundle.min.css" />
 
     <!-- link the toastr css files -->
     <link rel="stylesheet" href="../node_modules/toastr/build/toastr.css">
@@ -32,18 +33,29 @@
     <link href="../public/css/dashboard.css" rel="stylesheet" />
     <link href="../public/css/loader.css" rel="stylesheet" />
     <link href="../public/css/postStyle.css" rel="stylesheet" />
+    <link href="../public/css/postLayout.css" rel="stylesheet" />
+    <link href="../public/css/templates.css" rel="stylesheet" />
+    <link href="../public/css/chatStyle.css" rel="stylesheet" />
+
 
     <!-- link the jquery and toastr and the zuck.js for the stories -->
     <script src="../node_modules/dompurify/dist/purify.min.js"></script>
     <script src="../node_modules/zuck.js/dist/zuck.js"></script>
     <script defer src="../node_modules/jquery/dist/jquery.min.js"></script>
     <script defer src="../node_modules/toastr/build/toastr.min.js"></script>
+    <script defer src="../node_modules/swiper/swiper-bundle.min.js"></script>
 
     <!-- link the js file  -->
     <script defer src="../public/js/notificationSys.js"></script>
     <script defer src="../public/js/stories.js"></script>
     <script defer src="../public/js/dashboard.js"></script>
     <script defer src="../public/js/postScript.js"></script>
+    <script defer src="../public/js/postsReqs.js"></script>
+    <script defer src="../public/js/templates.js"></script>
+    <script defer src="../public/js/requestsJs.js"></script>
+    <script defer src="../public/js/friends.js"></script>
+    <script defer src="../public/js/chatScript.js"></script>
+
 </head>
 
 <body>
@@ -60,12 +72,15 @@
                 <button id="createPost_navButton"><i class="fas fa-plus"></i> Create</button>
             </div>
             <div class="profileImage">
-                <img src="../public/images/<?=$_SESSION['profile_pic']?>" alt="profile picture" />
+                <img src="../public/images/<?= $_SESSION['profile_pic'] ?>" alt="profile picture" />
             </div>
         </div>
     </div>
     <div class="container">
-        <div class="col"></div>
+        <div class="col">
+            <?php include 'templates/profileTemplate.php'; ?>
+            <?php include 'templates/sideBar.php'; ?>
+        </div>
         <div class="col">
             <div id="stories" class="stories">
                 <div id="addStory" class="add-story">
@@ -74,8 +89,34 @@
             </div>
 
             <?php include 'templates/postTemplate.php'; ?>
+
+            <div class="suggest-mode">
+                <button id="suggestion" class="posts-sort active">suggestion</button>
+                <button id="populaire" class="posts-sort">populaire</button>
+            </div>
+            <div class="posts">
+
+            </div>
         </div>
-        <div class="col"></div>
+        <div class="col">
+            <!-- the friends request bar -->
+            <div class="friends-req">
+                <div class="friend-request-con">
+                    <div class="friend-req-header">
+                        <span>REQUESTS</span>
+                        <span id="requests_number">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- the friends list bar -->
+            <div class="friends-list">
+                <div class="friends-list-header">
+                    <span>FRIENDS</span>
+                    <span id="friends_number">33</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- add the stories modals  -->
@@ -103,7 +144,8 @@
                 </svg>
                 <p>Drag photos and videos here</p>
                 <button onclick="document.getElementById('media-file').click()">
-                    <input type="file" id="media-file" name="media-file" accept="image/*,video/*" />Select From computer
+                    <input type="file" id="media-file" name="media-file" accept="image/*,video/*" />Select From
+                    computer
                 </button>
             </div>
         </div>
@@ -126,6 +168,9 @@
             <button id="cancel">Cancel</button>
         </div>
     </div>
+
+    <!--messages -->
+    <?php include 'templates/chatUI.php'; ?>
 
     <!-- the main loaders  -->
     <div class="loader"></div>

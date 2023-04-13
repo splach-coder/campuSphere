@@ -19,7 +19,7 @@ $conn = $db->getConnection();
 
 $userID = $_SESSION['user_id'];
 
-$sql = "SELECT p.post_id, p.user_id, u.user_name, pr.profile_pic, p.status, p.user_audience, p.comments_number, p.views_number, p.shares_number, p.saves_number, p.created_at FROM `posts` AS p
+$sql = "SELECT p.post_id, p.user_id, u.user_name, pr.profile_pic, p.status, p.user_audience, p.has_media, p.comments_number, p.likes_number, p.views_number, p.shares_number, p.saves_number, p.created_at FROM `posts` AS p
 INNER JOIN `users` AS u ON u.id_user = p.user_id
 INNER JOIN `profile` AS pr ON pr.id_user = u.id_user
 WHERE p.user_id = '$userID' ORDER BY p.created_at DESC;";
@@ -30,18 +30,26 @@ $posts = $stmt->fetchAll();
 $posts_arr = array();
 
 foreach ($posts as $post) {
+    $pass = 'pass';
+
+    if ($post['has_media'] == "true") {
+        $pass = "non";
+    }
+
     $p = array(
         'post_id' => $post['post_id'],
         'user_id' => $post['user_id'],
         'user_name' => $post['user_name'],
         'user_image' => '../public/images/' . $post['profile_pic'],
-        'status' => $post['status'],
+        'status' => slice_status($post['status'], $pass),
         'user_audience' => $post['user_audience'],
-        'created_at' => $post['created_at'],
+        'date' => instagram_time($post['created_at']),
+        'likes_number' => $post['likes_number'],
         'comments_number' => $post['comments_number'],
         'views_number' => $post['views_number'],
         'shares_number' => $post['shares_number'],
         'saves_number' => $post['saves_number'],
+        'has_media' => $post['has_media'],
         'post_media' => array()
     );
 

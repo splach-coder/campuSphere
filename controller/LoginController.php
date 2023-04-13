@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sanitizedUsername = sanitizeInput($username);
         $sanitizedPassword = sanitizeInput($password);
         
-        $stmt = $conn->prepare('SELECT u.id_user, `user_name`, `password`, `role`, `profile_pic` FROM `users` u, `profile` p WHERE p.id_user = u.id_user AND `user_name` = ?');
+        $stmt = $conn->prepare("SELECT u.id_user, `user_name`, `password`, `role`, concat(p.first_name, ' ', p.last_name) as 'fullname' , `profile_pic` FROM `users` u, `profile` p WHERE p.id_user = u.id_user AND `user_name` = ?");
         $stmt->execute([$sanitizedUsername]);  
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           // Store the user's session information
           $_SESSION['user_id'] = $user['id_user'];
           $_SESSION['username'] = $user['user_name'];
+          $_SESSION['fullname'] = $user['fullname'];
           $_SESSION['role'] = $user['role'];
           $_SESSION['profile_pic'] = $user['profile_pic'];
           $_SESSION['loggedIn'] = true;

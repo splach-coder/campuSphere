@@ -21,6 +21,7 @@
     "dompurify": "^3.0.1",
     "jquery": "^3.6.3",
     "normalize.css": "^8.0.1",
+    "swiper": "^9.2.0",
     "toastr": "^2.1.4",
     "zuck.js": "^2.0.4"
   }
