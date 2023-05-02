@@ -117,14 +117,14 @@ function instagram_time($date)
   }
 }
 
-function slice_status($string, $pass)
+function slice_status($string, $pass, $length, $outer = "<button>read
+more</button>")
 {
   $words = explode(" ", $string);
 
   if (count($words) >= 8 && $pass == "non") {
-    $sliced_words = array_slice($words, 0, 8);
-    $sliced_string = implode(" ", $sliced_words) . "...   <button>read
-    more</button>";
+    $sliced_words = array_slice($words, 0, $length);
+    $sliced_string = implode(" ", $sliced_words) . "...   " . $outer;
     return $sliced_string;
   } else {
     return $string;
@@ -144,4 +144,57 @@ function fetchSingleValue($query, $conn)
   $stmt->execute();
   $num_views = $stmt->fetchColumn();
   return $num_views;
+}
+
+function userStatus($conn, $recipientId)
+{
+  // Set a time threshold (in seconds)
+  $time_threshold = 300; // 5 minutes
+
+  // Check if the user you are talking to is online or when they were last seen
+  $last_activity_time = fetchSingleValue("SELECT lastSeen FROM users WHERE id_user = '$recipientId'", $conn);
+
+  if ($last_activity_time === null || strtotime($last_activity_time) === false) {
+    return null;
+  }
+
+
+  // var_dump(strtotime($last_activity_time));
+  // var_dump(time() - 7200);
+  // var_dump(strtotime($last_activity_time) + 7200 > time() - $time_threshold);
+  // exit();
+
+  if (strtotime($last_activity_time) + 7200 > time() - $time_threshold) {
+    return "online";
+  } else {
+    return "Last seen " . date('F j, g:i a', strtotime($last_activity_time));
+  }
+}
+
+
+function userExists($conn, $searchType, $value)
+{
+  // Determine which column to search based on $searchType
+  $column = ($searchType == 'email') ? 'email' : 'user_name';
+
+  // Prepare the query
+  $stmt = $conn->prepare("SELECT COUNT(*) FROM `users` WHERE $column = ?");
+
+  // Bind the value to the parameter
+  $stmt->bindParam(1, $value);
+
+  // Execute the query and fetch the result
+  $stmt->execute();
+  $count = $stmt->fetchColumn();
+
+  // If count is greater than zero, the user exists in the database
+  return $count > 0;
+}
+
+function createNotification($conn, $text)
+{
+  // save like in database
+  $sql = "INSERT INTO `notifications`(`Texte_notification`) VALUES (?)";
+  if ($conn->prepare($sql)->execute([$text])) return true;
+  else return false;
 }

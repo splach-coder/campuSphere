@@ -1,0 +1,379 @@
+* {
+    font-family: "Lato", sans-serif;
+}
+
+.hobbies-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: grayscale(50%) blur(5px);
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.wrapper-hobbies-major {
+    width: 600px;
+    height: 700px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 12px;
+}
+
+.wrapper-hobbies {
+    width: 1200px;
+    display: flex;
+}
+
+.wrapper-hobbies>div {
+    width: 500px;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.hobbies-modal .wrapper-hobbies .hobbies-holder {
+    width: 600px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    transition: all 250ms ease;
+}
+
+.hobbies-modal .wrapper-hobbies .hobbies-holder.active {
+    margin-left: -600px;
+}
+
+.hobbies-modal .hobbies-header {
+    position: relative;
+    width: 100%;
+    height: 43%;
+}
+
+.hobbies-modal .hobbies-header .bg {
+    position: relative;
+    width: 100%;
+    height: 60%;
+    background: #1a2980;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right,
+            #26d0ce,
+            #1a2980);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,
+            #26d0ce,
+            #1a2980);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.hobbies-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 auto;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.hobbies-modal .hobbies-header .hobbies-infos {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.hobbies-modal .hobbies-header .hobbies-infos h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #050505;
+}
+
+.hobbies-modal .hobbies-header .hobbies-infos p {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #65676b;
+}
+
+.hobbies-modal .hobbies-main {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-top: 30px;
+    border-bottom: 1px solid #ccc;
+}
+
+.hobbies-modal .hobbies-main p {
+    font-size: 13px;
+    line-height: 20px;
+    color: #65676b;
+    font-weight: 600;
+}
+
+.hobbies-modal .hobbies-main .hobbies-icons-holder {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.hobbies-modal .hobbies-main .hobbies-icons-holder span {
+    border: 1px solid;
+    padding: 8px 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #050505;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+    display: flex;
+    gap: 10px;
+    transition: all 250ms ease-in;
+}
+
+.hobbies-modal .hobbies-main .hobbies-icons-holder span:hover {
+    background: #f2f2f2;
+}
+
+.hobbies-modal .hobbies-main .hobbies-icons-holder span.searchOthers {
+    color: #1771e6;
+}
+
+.hobbies-modal .hobbies-main .hobbies-icons-holder span.searchOthers:hover {
+    background: #d3dfe9;
+}
+
+.hobbies-modal .hobbies-footer {
+    width: 100%;
+    height: 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hobbies-modal .hobbies-footer div:first-child {
+    display: flex;
+    gap: 10px;
+    padding-left: 20px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.hobbies-modal .hobbies-footer div.buttons {
+    display: none !important;
+    gap: 10px;
+    margin-inline: 30px;
+}
+
+.hobbies-modal .hobbies-footer div.buttons.active {
+    display: flex !important;
+}
+
+.hobbies-modal .hobbies-footer div.buttons button {
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    padding: 0px 16px;
+    border-radius: 2px;
+    min-width: 80px;
+    height: 32px;
+    font-size: 14px;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+.hobbies-modal .hobbies-footer div.buttons button.save {
+    background-color: rgb(0, 120, 212);
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 120, 212);
+}
+
+.hobbies-modal .hobbies-footer div.buttons button.cancel {
+    background-color: rgb(255, 255, 255);
+    color: rgb(50, 49, 48);
+    border: 1px solid rgb(138, 136, 134);
+}
+
+.hobbies-modal .hobbies-footer div.buttons button.cancel:hover {
+    background-color: rgb(243, 242, 241);
+    color: rgb(32, 31, 30);
+}
+
+.hobbies-modal .hobbies-footer div.buttons button.save:hover {
+    background-color: rgb(16, 110, 190);
+    border: 1px solid rgb(16, 110, 190);
+}
+
+.hobbies-modal .hobbies-footer i {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.hobbies-modal .search-hobbie-holder {
+    width: 600px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    transition: all 250ms ease;
+}
+
+.hobbies-modal .search-hobbie-holder .upper-hobbies {
+    position: relative;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 0;
+}
+
+.hobbies-modal .search-hobbie-holder .upper-hobbies i {
+    background: #d8dadf;
+}
+
+.hobbies-modal .search-hobbie-holder .search-hobbies {
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.hobbies-modal .search-hobbie-holder .search-box {
+    width: 90%;
+    display: flex;
+    gap: 20px;
+    background: #eff1f4;
+    padding: 15px 20px;
+    margin: 0 auto;
+    border-radius: 25px;
+    color: #65676b;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.hobbies-modal .search-hobbie-holder .search-box input {
+    outline: none;
+    border: none;
+    background: none;
+    width: 100%;
+    height: 100%;
+    color: #050505;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.hobbies-modal .search-hobbie-holder .main-hobbies {
+    width: 100%;
+    height: 70%;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hobbies-modal .search-hobbie-holder .main-hobbies .results-hobbies {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+    color: #65676b;
+    padding: 12px;
+    display: none;
+}
+
+.hobbies-modal .search-hobbie-holder .main-hobbies .searchesHobbies {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.hobbies-modal .search-hobbie-holder .main-hobbies .searchesHobbies span {
+    border: 1px solid;
+    padding: 8px 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #050505;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+    display: flex;
+    gap: 10px;
+    transition: all 250ms ease-in;
+}
+
+.hobbies-modal .search-hobbie-holder .main-hobbies .searchesHobbies span:hover {
+    background: #f2f2f2;
+}
+
+.hobbies-modal span.active {
+    background: #d3dfe9;
+    color: #1771e6 !important;
+}
+
+.hobbies-con {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.hobbies-con span {
+    border: 1px solid;
+    padding: 8px 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #050505;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+    display: flex;
+    gap: 10px;
+    transition: all 250ms ease-in;
+    position: relative;
+}
+
+.hobbies-con span:hover {
+    background: #f2f2f2;
+}
+
+.hobbies-con .remove-hobbie {
+    position: absolute;
+    top: -5px;
+    right: -7px;
+    width: 15px;
+    height: 15px;
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}

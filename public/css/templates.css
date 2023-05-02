@@ -98,7 +98,7 @@
     background: var(--primary-blue);
     width: 20px;
     height: 20px;
-    padding: 4px;
+    padding: 12px;
     border-radius: 4px;
     color: white;
     cursor: pointer;
@@ -194,6 +194,72 @@
 }
 
 
+/*friends */
+.popup {
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    width: 180px;
+    height: 100px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    padding-inline: 2px;
+    border-radius: 5px;
+    color: var(--primary-black);
+}
+
+.popup .fa-caret-up {
+    position: absolute;
+    top: -14px;
+    right: 2px;
+    font-size: 29px;
+    color: white;
+}
+
+.send-message-button, .show-profile-button {
+    width: 100%;
+    height: 50%;
+    outline: none;
+    background: transparent;
+    padding: 12px 10px;
+    cursor: pointer;
+    border: none;
+    align-items: center;
+    gap: 15px;
+    display: flex;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 250ms ease;
+}
+
+.send-message-button:hover, .show-profile-button:hover {
+    color: var(--primary-blue);
+}
+
+.send-message-button {
+    border-bottom: 1px solid #ccc;
+}
+
+.popup.show {
+    display: block;
+    animation: popup 0.3s forwards;
+    z-index: 99;
+}
+
+@keyframes popup {
+    from {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-50%) translateY(10px);
+        opacity: 1;
+    }
+}
+
 /*side bar styles*/
 /* Style for the sidebar */
 .sidebar {
@@ -245,7 +311,6 @@
 
 /* the friends bar*/
 .friends-list {
-    overflow-y: scroll;
     font-family: 'Lato', sans-serif;
     margin: 0 auto;
     display: flex;
@@ -289,7 +354,7 @@
     background: var(--primary-blue);
     width: 20px;
     height: 20px;
-    padding: 4px;
+    padding: 11px;
     border-radius: 4px;
     color: white;
     cursor: pointer;
@@ -299,6 +364,7 @@
 }
 
 .friends-list .friends {
+    position: relative;
     width: 300px;
     padding: 15px 20px;
     background: white;
@@ -307,6 +373,7 @@
     align-items: center;
     gap: 20px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .friends-list .friends .friends-img-box {
@@ -340,4 +407,229 @@
     display: grid;
     place-items: center;
     cursor: pointer;
+}
+
+/*Search Sort */
+
+.recent-searches {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: #fff;
+    padding: 8px 8px;
+    width: 239.8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    z-index: 999;
+    display: none;
+}
+
+.recent-searches .search {
+    padding: 12px 24px;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 250ms ease;
+    border-radius: 8px;
+    color: var(--primary-black);
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.recent-searches .search:hover {
+    background: #B2D1FA;
+    color: #fff;
+}
+
+.recent-searches .search:hover i {
+    color: red;
+}
+
+.recent-searches.show {
+    display: block;
+    animation: popup 0.3s forwards;
+}
+
+.searchers-con {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background: #fff;
+    padding: 8px 16px;
+    width: 239.8px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    z-index: 999;
+    display: none;
+}
+
+.searchers-con.show {
+    display: block;
+    animation: popup 0.3s forwards;
+}
+
+@keyframes popup {
+    from {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(10px);
+        opacity: 1;
+    }
+}
+
+.search-bar {
+    padding: 2px 8px;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    transition: all 250ms ease;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.search-bar:hover {
+    background: #B2D1FA;
+}
+
+.search-bar .search-bar-img {
+    background: #ccc;
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.search-bar .search-bar-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search-bar .search-bar-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15%;
+    justify-content: center;
+}
+
+.search-bar .search-bar-info span:first-child {
+    color: var(--primary-black);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.search-bar .search-bar-info span:last-child {
+    color: #777;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+
+/*under profile*/
+.underprofile-holder {
+    position: absolute;
+    top: 100%;
+    left: -400%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px 10px;
+    border-radius: 5px;
+    display: none;
+    font-family: 'Lato', sans-serif;
+    z-index: 9;
+}
+
+.underprofile-holder.show {
+    display: block;
+    animation: popup 0.3s forwards;
+}
+
+@keyframes popup {
+    from {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-50%) translateY(10px);
+        opacity: 1;
+    }
+}
+
+.underprofile-holder .profile {
+    display: flex;
+    gap: 20px;
+    padding: 12px 22px;
+    align-items: center;
+    box-shadow: 1px 1px 3px #ccc;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--primary-black);
+}
+
+.underprofile-holder .profile .img-holder {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #777;
+}
+
+.underprofile-holder .profile .info {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.underprofile-holder .item {
+    width: 100%;
+    padding: 15px 0px 15px 0px;
+    margin-top: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    border-radius: 8px;
+    transition: all 250ms ease;
+    color: var(--primary-black);
+}
+
+.underprofile-holder .item:hover {
+    color: var(--primary-blue);
+    background: var(--primary-gray);
+}
+
+.underprofile-holder .item i {
+    font-size: 22px;
+    margin-left: 15px;
+}
+
+.underprofile-holder .devider {
+    height: .6px;
+    background: var(--primary-blue);
+    width: 90%;
+    border-radius: 20px;
+    margin: 20px auto;
 }

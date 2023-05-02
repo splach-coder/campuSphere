@@ -14,6 +14,7 @@
     background: #fff;
     box-shadow: 0px 2px 5px 0px #A0ABBB;
     transition: all 250ms ease;
+    z-index: 2;
 }
 
 .get-messages-center:hover {
@@ -45,6 +46,7 @@
     right: 1%;
     transform: translateY(-50%);
     display: none;
+    font-family: 'Lato', sans-serif;
 }
 
 .pic {
@@ -53,6 +55,10 @@
     background-size: cover;
     background-position: center;
     border-radius: 50%;
+}
+
+.pic.online {
+    border: 3px solid #27C93F;
 }
 
 .contact {
@@ -115,11 +121,13 @@
     background: white;
     box-shadow: 0 0 8rem 0 rgba(0, 0, 0, 0.1), 2rem 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
     transition: transform 500ms;
+    overflow-y: scroll;
 }
 
 .contacts h2 {
     margin: 0.5rem 0 1.5rem 5rem;
     color: #282C34;
+    font-size: 1.3em;
 }
 
 .contacts .fas.fa-bars.fa-2x {
@@ -171,6 +179,20 @@
     transition: all 250ms;
 }
 
+#close-messages-center {
+    position: absolute;
+    right: 4%;
+    top: 2%;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 250ms;
+    z-index: 10;
+}
+
+#close-messages-center:hover {
+    color: #E60023;
+}
+
 .chat .contact.bar .fas.fa-times:hover {
     color: #E60023;
 }
@@ -178,6 +200,7 @@
 .chat .messages {
     padding: 1rem;
     background: #f7f7f7;
+    height: 100%;
     flex-shrink: 2;
     overflow-y: auto;
     box-shadow: inset 0 2rem 2rem -2rem rgba(0, 0, 0, 0.05), inset 0 -2rem 2rem -2rem rgba(0, 0, 0, 0.05);
@@ -304,22 +327,18 @@
     }
 }
 
-.pic.stark {
-    background-image: url("https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/7/73/SMH_Mentor_6.png");
+.chat.free {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.pic.banner {
-    background-image: url("https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/4/4f/BruceHulk-Endgame-TravelingCapInPast.jpg");
+.chat img {
+    width: 200px;
+    height: 50px;
+    object-fit: cover;
 }
 
-.pic.thor {
-    background-image: url("https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/9/98/ThorFliesThroughTheAnus.jpg");
-}
-
-.pic.danvers {
-    background-image: url("https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/0/05/HeyPeterParker.png");
-}
-
-.pic.rogers {
-    background-image: url("https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/7/7c/Cap.America_%28We_Don%27t_Trade_Lives_Vision%29.png");
+.chat p {
+    color: #999;
 }

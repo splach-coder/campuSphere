@@ -1,5 +1,5 @@
 <?php
-  require_once '../auth/forwardAuthentication.php';
+require_once '../auth/forwardAuthentication.php';
 ?>
 <html>
 
@@ -26,8 +26,7 @@
             <div class="loginbackground box-background--white padding-top--64">
                 <div class="loginbackground-gridContainer">
                     <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
-                        <div class="box-root"
-                            style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
+                        <div class="box-root" style="background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%); flex-grow: 1;">
                         </div>
                     </div>
                     <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
@@ -69,13 +68,12 @@
                     <div class="formbg">
                         <div class="formbg-inner padding-horizontal--48">
                             <span class="padding-bottom--15">Sign in to your account</span>
-                            <form id="stripe-login" method="post" action="../controller/LoginController.php"
-                                onsubmit="return validateForm()">
-                                <?php if(isset($_GET['message']) && isset($_GET['type'])){?>
-                                <div class="alert alert-<?=$_GET['type']?>" role="alert">
-                                    <?= $_GET['message']?>
-                                </div>
-                                <?php }?>
+                            <form id="stripe-login" method="post" action="../controller/LoginController.php" onsubmit="return validateForm()">
+                                <?php if (isset($_GET['message']) && isset($_GET['type'])) { ?>
+                                    <div class="alert alert-<?= $_GET['type'] ?>" role="alert">
+                                        <?= $_GET['message'] ?>
+                                    </div>
+                                <?php } ?>
                                 <div class="field padding-bottom--24">
                                     <label for="username">username</label>
                                     <input type="text" id="username" name="username">
@@ -104,7 +102,7 @@
                         </div>
                     </div>
                     <div class="footer-link padding-top--24">
-                        <span>Don't have an account? <a href="">Sign up</a></span>
+                        <span>Don't have an account? <a href="./signup.php">Sign up</a></span>
                         <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
                             <span><a href="#">© Stackfindover</a></span>
                             <span><a href="#">Contact</a></span>

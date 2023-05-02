@@ -1,6 +1,18 @@
 $(document).ready(function () {
     var globFile;
 
+    $(window).on('scroll', function () {
+        var navbar = $('.navbar');
+        var navbarOffsetTop = navbar.offset().top;
+
+        if ($(window).scrollTop() >= navbarOffsetTop) {
+            navbar.addClass('fixed');
+        } else {
+            navbar.removeClass('fixed');
+        }
+    });
+
+
     // Prevent default drag behaviors
     ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
         $(".modal-content").on(eventName, function (e) {

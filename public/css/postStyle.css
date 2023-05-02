@@ -15,7 +15,7 @@
   justify-content: center;
   display: none;
   font-family: 'Lato', sans-serif;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .body-holder {
@@ -195,6 +195,12 @@
 .post-modal .post-container .wrapper section {
   width: 500px;
   background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.post-modal .post-container .wrapper section.audience {
+  padding: 12px;
 }
 
 .post-modal .post-container img {
@@ -319,10 +325,12 @@
   font-size: 15px;
   font-weight: 500;
   cursor: default;
+  margin-bottom: 0;
 }
 
 .post-modal .form .options .list {
   list-style: none;
+  margin-bottom: 0;
 }
 
 .post-modal .options .list li {

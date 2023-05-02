@@ -88,7 +88,6 @@ if ($media != 'undefined') {
 
         // Add uploaded file to array
         $uploadedFiles[] = array('name' => $fileName, 'type' => $fileType);
-
     }
 }
 
@@ -110,16 +109,23 @@ $sql = "INSERT INTO `posts`(`user_id`, `status`, `user_audience`) VALUES (?,?,?)
 $conn->prepare($sql)->execute([$userID,  $status, $audience]);
 
 // Select the UUID value of the last inserted row
-$sql = "SELECT `post_id` FROM `posts` WHERE `post_id` = LAST_INSERT_ID();";
+$sql = "SELECT `post_id` FROM `posts` p 
+WHERE p.user_id = '$userID'
+ORDER by created_at DESC LIMIT 1;";
+
 $stmt = $conn->query($sql);
 $postID = $stmt->fetchColumn();
 
 if (!empty($uploadedFiles)) {
+    // save file location in database
+    $sql = "UPDATE `posts` SET `has_media`='true' WHERE post_id = '$postID '";
+    $conn->prepare($sql)->execute();
+
     foreach ($uploadedFiles as $file) {
-      $fileName = $file['name'];
-      $fileType = $file['type'];
-      $sql = "INSERT INTO `post_media`(`post_id`, `media_url`, `type`) VALUES (?, ?, ?)";
-      $conn->prepare($sql)->execute([$postID, $fileName, $fileType]);
+        $fileName = $file['name'];
+        $fileType = $file['type'];
+        $sql = "INSERT INTO `post_media`(`post_id`, `media_url`, `type`) VALUES (?, ?, ?)";
+        $conn->prepare($sql)->execute([$postID, $fileName, $fileType]);
     }
 }
 

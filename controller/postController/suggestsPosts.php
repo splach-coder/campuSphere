@@ -61,7 +61,7 @@ foreach ($posts as $post) {
         'user_id' => $post['user_id'],
         'user_name' => $post['user_name'],
         'user_image' => '../public/images/' . $post['profile_pic'],
-        'status' => slice_status($post['status'], $pass),
+        'status' => slice_status($post['status'], $pass, 8),
         'user_audience' => $post['user_audience'],
         'date' => instagram_time($post['created_at']),
         'likes_number' => $post['likes_number'],

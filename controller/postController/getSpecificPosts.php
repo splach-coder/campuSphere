@@ -17,18 +17,18 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 $db = new db();
 $conn = $db->getConnection();
 
-if (!isset($_GET['user_id']) && empty($_GET['user_id'])) {
+if (!isset($_GET['id']) && empty($_GET['id'])) {
     header('HTTP/1.1 400 Bad Request ');
     echo 'Invalid request method';
     exit;
 }
 
-$userID = $_GET['user_id'];
+$postID = $_GET['id'];
 
 $sql = "SELECT p.post_id, p.user_id, u.user_name, pr.profile_pic, p.status, p.user_audience, p.has_media, p.comments_number, p.likes_number, p.views_number, p.shares_number, p.saves_number, p.created_at FROM `posts` AS p
 INNER JOIN `users` AS u ON u.id_user = p.user_id
 INNER JOIN `profile` AS pr ON pr.id_user = u.id_user
-WHERE p.user_id = '$userID' ORDER BY p.created_at DESC;";
+WHERE p.post_id = '$postID' ORDER BY p.created_at DESC;";
 
 $stmt = $conn->query($sql);
 $posts = $stmt->fetchAll();
@@ -43,11 +43,11 @@ foreach ($posts as $post) {
     }
 
     $p = array(
-        'post_id' => $post['post_id'],
+        'post_id' => $postID,
         'user_id' => $post['user_id'],
         'user_name' => $post['user_name'],
         'user_image' => '../public/images/' . $post['profile_pic'],
-        'status' => slice_status($post['status'], $pass),
+        'status' => slice_status($post['status'], $pass, 8),
         'user_audience' => $post['user_audience'],
         'date' => instagram_time($post['created_at']),
         'likes_number' => $post['likes_number'],
@@ -56,6 +56,7 @@ foreach ($posts as $post) {
         'shares_number' => $post['shares_number'],
         'saves_number' => $post['saves_number'],
         'has_media' => $post['has_media'],
+        'likedByUser' => $likedByUser,
         'post_media' => array()
     );
 

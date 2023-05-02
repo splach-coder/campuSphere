@@ -24,10 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Sanitize the input using the function
         $sanitizedUsername = sanitizeInput($username);
         $sanitizedPassword = sanitizeInput($password);
-        
+
+
         $stmt = $conn->prepare("SELECT u.id_user, `user_name`, `password`, `role`, concat(p.first_name, ' ', p.last_name) as 'fullname' , `profile_pic` FROM `users` u, `profile` p WHERE p.id_user = u.id_user AND `user_name` = ?");
         $stmt->execute([$sanitizedUsername]);  
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
         // If a user is found with the provided username, check their password
         if ($user && password_verify($sanitizedPassword , $user['password'])) {
@@ -49,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $_SESSION['fullname'] = $user['fullname'];
           $_SESSION['role'] = $user['role'];
           $_SESSION['profile_pic'] = $user['profile_pic'];
+          $_SESSION['last_activity'] = time();
           $_SESSION['loggedIn'] = true;
         
           // Redirect the user to the home page or another protected resource

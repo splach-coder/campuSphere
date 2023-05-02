@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+}
+
+.add-product-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: grayscale(50%) blur(5px);
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.wrapper-addProduct-major {
+    width: 600px;
+    height: 700px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 12px;
+}
+
+.wrapper-product {
+    width: 1200px;
+    display: flex;
+    transition: all 250ms ease;
+}
+
+.wrapper-product>div {
+    width: 600px;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.product-holder-first, .product-holder-second {
+    width: 600px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    transition: all 250ms ease;
+}
+
+.wrapper-product.active {
+    margin-left: -600px;
+}
+
+.product-holder-first .product-header {
+    position: relative;
+    width: 100%;
+    height: 25%;
+}
+
+.product-holder-second .header {
+    position: relative;
+    width: 100%;
+    height: 30%;
+    margin-bottom: 30px;
+    padding: 0;
+    border: none;
+    font-weight: 500;
+}
+
+.product-holder-first .product-header .bg, .product-holder-second .bg {
+    position: relative;
+    width: 100%;
+    height: 70%;
+    background: #1a2980;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right,
+            #26d0ce,
+            #1a2980);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,
+            #26d0ce,
+            #1a2980);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.product-holder-first .product-header .bg h4, .product-holder-second .bg h4 {
+    position: relative;
+    text-align: center;
+    padding-top: 50px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 1.2px;
+}
+
+.hobbies-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 auto;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.product-holder-first #drop-box {
+    position: relative;
+    width: 95%;
+    height: 68%;
+    border: 1px solid;
+    margin-inline: auto;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.product-holder-first #drop-box .zwa9 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #050505;
+}
+
+.product-holder-first #drop-box .zwa9 i {
+    font-size: 2rem;
+}
+
+.product-holder-first #drop-box .zwa9 p {
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.product-holder-first #drop-box .preview {
+    position: relative;
+    display: flex;
+    width: 140px;
+    height: 120px;
+    margin-top: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.product-holder-first #drop-box .preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#drop-box.hover .zwa9 {
+    display: none;
+}
+
+#drop-box.hover {
+    border: 2px solid #23a1b8;
+}
+
+#drop-box.full {
+    border: 2px solid #f00;
+}
+
+.preview i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    font-size: 15px;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+}
+
+#maxFiles {
+    margin: 5px auto;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 20px;
+    color: rgb(255 0 0 / 80%);
+    display: none;
+}
+
+.buttons7 button, #icon-left {
+    outline: none;
+    cursor: pointer;
+    padding: 0 16px;
+    background-color: #0070d2;
+    border-radius: 0.25rem;
+    border: 1px solid #0070d2;
+    color: #fff;
+    font-size: 13px;
+    line-height: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin-inline: 15px;
+}
+
+#icon-left {
+    width: max-content;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.buttons7 button {
+    float: right;
+    display: none;
+}
+
+.buttons7 button:hover {
+    background-color: #005fb2;
+    border-color: #005fb2;
+}
+
+label {
+    font-size: 18px;
+}
+
+.product-holder-second input, .product-holder-second select {
+    padding: 8px 16px;
+}
+
+footer {
+    border-top: 1px solid #ccc;
+    padding: 15px 0 0 0;
+}

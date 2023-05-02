@@ -213,7 +213,6 @@ $(document).ready(function () {
                 data.append('media[]', file);
             }
 
-            console.log('test')
             $container.css('filter', 'blur(30px) grayscale(80%)');
             $(".loader").css("display", "block");
 
