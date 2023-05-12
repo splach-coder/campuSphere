@@ -12,10 +12,7 @@
                 Contacts
             </h2>
         </div>
-        <div style="color: #999;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);width: 100%;text-align: center;">
-            no
-            Contacts send message to some one
-        </div>
+
     </div>
     <div class="chat" id="chat-con">
         <div class="fas fa-times" id="close-messages-center" title="close"></div>

@@ -27,7 +27,7 @@ $conn = $db->getConnection();
 $str = $_GET['str'];
 
 $sql = "SELECT ID_produit, Nom_produit FROM produits
-WHERE Nom_produit LIKE '%$str%' LIMIT 5;";
+WHERE Nom_produit LIKE '%$str%' AND Statut_produit = 'actif' LIMIT 5;";
 
 $stmt = $conn->query($sql);
 $pros = $stmt->fetchAll();

@@ -17,9 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 $db = new db();
 $conn = $db->getConnection();
 
+$userID = $_SESSION['user_id'];
+
 $sql = "SELECT p.ID_produit, p.Nom_produit, p.location, p.Prix, mi.image_url FROM `produits` AS p
-        INNER JOIN `market_images` AS mi ON p.ID_produit = mi.ID_produit 
-        WHERE p.Statut_produit = 'actif'
+        INNER JOIN `market_images` AS mi ON p.ID_produit = mi.ID_produit
+        WHERE `ID_utilisateur` = '$userID' 
+        AND p.Statut_produit = 'actif' 
         GROUP BY p.ID_produit
         ORDER BY p.Date_publication DESC ";
 

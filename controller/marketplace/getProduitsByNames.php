@@ -30,7 +30,8 @@ $str = $_GET['str'];
 $sql = "SELECT p.ID_produit, p.Nom_produit, p.location, p.Prix, mi.image_url
         FROM `produits` AS p
         INNER JOIN `market_images` AS mi ON p.ID_produit = mi.ID_produit
-        WHERE Nom_produit LIKE '%$str%'
+        WHERE Nom_produit LIKE '%$str%' 
+        AND p.Statut_produit = 'actif'
         GROUP BY p.ID_produit
         ORDER BY p.Date_publication DESC ";
 

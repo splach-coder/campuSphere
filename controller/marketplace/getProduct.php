@@ -36,6 +36,7 @@ $produit = $stmt->fetch();
 
 $ps = array(
     'id' => $produitID,
+    'user_id' => $produit['ID_utilisateur'],
     'title' => $produit['Nom_produit'],
     'username' => $produit['user_name'],
     'description' => $produit['Description'],

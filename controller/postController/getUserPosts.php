@@ -30,7 +30,7 @@ $currentuserID = $_SESSION['user_id'];
 $sql = "SELECT p.post_id, p.user_id, u.user_name, pr.profile_pic, p.status, p.user_audience, p.has_media, p.comments_number, p.likes_number, p.views_number, p.shares_number, p.saves_number, p.created_at FROM `posts` AS p
 INNER JOIN `users` AS u ON u.id_user = p.user_id
 INNER JOIN `profile` AS pr ON pr.id_user = u.id_user
-WHERE p.user_id = '$userID' ORDER BY p.created_at DESC;";
+WHERE u.id_user = '$userID' ORDER BY p.created_at DESC;";
 
 $stmt = $conn->query($sql);
 $posts = $stmt->fetchAll();
@@ -84,11 +84,11 @@ foreach ($posts_arr as &$post) {
     foreach ($data as $row) {
         $new_item = array(
             'id' => $row['id'],
-            'media_url' => $row['media_url'],
+            'media_url' => '../public/images/posts/' . $row['media_url'],
             'type' => $row['type'],
         );
 
-        array_push($posts_arr['post_media'], $new_item);
+        array_push($post['post_media'], $new_item);
     }
 };
 

@@ -44,8 +44,7 @@ $stmt->bindParam(':message', $message);
 $result = $stmt->execute();
 
 if ($result) {
-   
-}
- else {
+    echo 'message sent';
+} else {
     echo "Error sending message: " . $stmt->errorInfo()[2];
 }

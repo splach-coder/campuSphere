@@ -77,6 +77,7 @@ $(document).ready(function () {
                         $("#4details").html(data.description);
                         $("#4sellerImage").attr('src', data.image);
                         $("#4username").html(data.username);
+                        $("#sendMessageProducts").attr('data-id', data.user_id)
 
                         $("#4swiper").empty();
 
@@ -192,13 +193,65 @@ $(document).ready(function () {
         })
     })
 
+    $("#selling").click(function () {
+        //get produits
+        $.ajax({
+            url: '../controller/marketplace/getMyProduits.php',
+            method: 'get',
+            success: function (data) {
+                console.log(data);
+                $(".card-holder").empty();
+
+                data.forEach(e => {
+                    $(".card-holder").append(product(e.id, e.name, e.price, e.image, e.location));
+                });
+
+                $(".card").click(function () {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 'fast');
+                    const id = $(this).attr('data-id');
+                    $(".see-product-modal").css('display', 'flex');
+                    $("body").css('overflow', 'hidden');
+
+                    $.ajax({
+                        url: '../controller/marketplace/getProduct.php',
+                        method: 'get',
+                        data: {
+                            id
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            $("#4title").html(data.title);
+                            $("#4price").html(data.prix + " DH");
+                            $("#4location").html("Listed a " + data.date + ' in ' + data.location);
+                            $("#4details").html(data.description);
+                            $("#4sellerImage").attr('src', data.image);
+                            $("#4username").html(data.username);
+
+                            $("#4swiper").empty();
+
+                            data.images.forEach(function (e) {
+                                $("#4swiper").append(`<div class='swiper-slide'>
+                                <img src='${e.url}' data-id='${e.id}' alt=''>
+                            <div>`)
+                            })
+                        },
+                        error: (data) => console.log(data)
+                    })
+
+                });
+            },
+            error: err => console.log(err)
+        });
+    })
+
     $(".createProduct").click(function () {
         $('html, body').animate({
             scrollTop: 0
         }, 'fast');
         $(".add-product-modal").css('display', 'flex');
         $('body').css('overflow', 'hidden');
-
 
 
         //get categories
@@ -247,6 +300,25 @@ $(document).ready(function () {
             $(".search-history-products").removeClass('show');
         }
     });
+
+    $("#sendMessageProducts").click(function () {
+        const friend_id = $(this).attr('data-id');
+
+        let message = $("#4produitmessage").val();
+
+        $.ajax({
+            url: '../controller/chat-controller/sendMessage.php',
+            type: 'POST',
+            data: {
+                friend_id: friend_id,
+                message: message
+            },
+            success: (data) => {
+                $("#4produitmessage").val('');
+            },
+            error: (xhr, status, error) => console.log(error),
+        });
+    })
 });
 
 

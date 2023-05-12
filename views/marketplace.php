@@ -191,16 +191,11 @@ require_once '../auth/ensureAuthentication.php';
                         Notifications
                     </div>
 
-                    <div class="market-section">
-                        <i class="fas fa-bag-shopping"></i>
-                        Buying
-                    </div>
-
-                    <div class="market-section">
+                    <div class="market-section" id="selling">
                         <i class="fas fa-tag"></i>
                         Selling
                     </div>
-                    <div class="createProduct">
+                    <div class="createProduct mt-auto">
                         <i class="fas fa-plus"></i>
                         Create new listing
                     </div>
@@ -291,8 +286,8 @@ require_once '../auth/ensureAuthentication.php';
                 <p class="text-muted ps-3 fs-5">
                     Send seller a message
                 </p>
-                <input type="text" class="form-control p-2" placeholder="Send a private messae">
-                <button class="btn btn-primary my-2 p-2 w-100"> Send </button>
+                <input type="text" id="4produitmessage" class="form-control p-2" placeholder="Send a private messae">
+                <button class="btn btn-primary my-2 p-2 w-100" id="sendMessageProducts" data-id=""> Send </button>
             </div>
         </div>
     </div>

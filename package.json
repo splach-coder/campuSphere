@@ -18,8 +18,11 @@
   "homepage": "https://github.com/splach-coder/campuSphere#readme",
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "datatables.net": "^1.13.4",
     "dompurify": "^3.0.1",
+    "fullcalendar": "^6.1.6",
     "jquery": "^3.6.3",
+    "moment": "^2.29.4",
     "normalize.css": "^8.0.1",
     "swiper": "^9.2.0",
     "toastr": "^2.1.4",

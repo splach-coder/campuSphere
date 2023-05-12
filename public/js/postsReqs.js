@@ -39,9 +39,9 @@ function makeAjaxCall(url) {
 
 function getPosts(url, posts_var) {
     return makeAjaxCall(url).then((data) => {
+        console.log(data);
         posts = data;
         posts_var.empty();
-
         posts.forEach(post => {
             posts_var.append(postLayout(post.has_media, post.post_id, post.user_id, post.user_name, post.user_image, post.status, post.likes_number, post.comments_number, post.shares_number, post.saves_number, post.date, post.post_media, post.likedByUser));
         });

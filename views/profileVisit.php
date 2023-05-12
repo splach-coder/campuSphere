@@ -60,8 +60,6 @@ require_once '../auth/ensureAuthentication.php';
     <script>
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
-    console.log("id = " + id);
-    console.log('<?= $_SESSION['user_id'] ?>');
     if (id != undefined) {
         if (id == '<?= $_SESSION['user_id'] ?>') {
             window.location.href = './profile.php';

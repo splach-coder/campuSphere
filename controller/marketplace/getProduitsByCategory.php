@@ -30,6 +30,7 @@ $sql = "SELECT p.ID_produit, p.Nom_produit, p.location, p.Prix, mi.image_url FRO
         INNER JOIN `market_images` AS mi ON p.ID_produit = mi.ID_produit
         INNER JOIN `categories` AS c ON c.ID_categorie = p.Categorie
         WHERE c.ID_categorie = $id 
+        AND p.Statut_produit = 'actif'
         GROUP BY p.ID_produit
         ORDER BY p.Date_publication DESC";
 

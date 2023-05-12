@@ -86,7 +86,7 @@ foreach ($posts_arr as &$post) {
     foreach ($data as $row) {
         $new_item = array(
             'id' => $row['id'],
-            'media_url' => $row['media_url'],
+            'media_url' => '../public/images/posts/' . $row['media_url'],
             'type' => $row['type'],
         );
 
